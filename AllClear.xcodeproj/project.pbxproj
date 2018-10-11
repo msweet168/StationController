@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		513120DA208506C40033A507 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120D9208506C40033A507 /* AppDelegate.swift */; };
-		513120DC208506C40033A507 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120DB208506C40033A507 /* ViewController.swift */; };
 		513120DF208506C40033A507 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 513120DD208506C40033A507 /* Main.storyboard */; };
 		513120E1208506C40033A507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 513120E0208506C40033A507 /* Assets.xcassets */; };
 		513120E4208506C40033A507 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 513120E2208506C40033A507 /* LaunchScreen.storyboard */; };
+		513120EC208507370033A507 /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120EB208507370033A507 /* BluetoothSerial.swift */; };
+		513120F0208507F70033A507 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120EF208507F70033A507 /* LoginViewController.swift */; };
+		513120F22085083E0033A507 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120F12085083E0033A507 /* MemberViewController.swift */; };
+		513120F4208508470033A507 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120F3208508470033A507 /* GuestViewController.swift */; };
+		513120F82085090E0033A507 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513120F72085090E0033A507 /* ScannerViewController.swift */; };
+		513120FB208513420033A507 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 513120FA20850B590033A507 /* Comfortaa-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		513120D6208506C40033A507 /* AllClear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllClear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		513120D9208506C40033A507 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		513120DB208506C40033A507 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		513120DE208506C40033A507 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		513120E0208506C40033A507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		513120E3208506C40033A507 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		513120E5208506C40033A507 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		513120EB208507370033A507 /* BluetoothSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
+		513120EF208507F70033A507 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		513120F12085083E0033A507 /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		513120F3208508470033A507 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
+		513120F72085090E0033A507 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		513120FA20850B590033A507 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +65,26 @@
 			isa = PBXGroup;
 			children = (
 				513120D9208506C40033A507 /* AppDelegate.swift */,
-				513120DB208506C40033A507 /* ViewController.swift */,
+				513120EF208507F70033A507 /* LoginViewController.swift */,
+				513120F72085090E0033A507 /* ScannerViewController.swift */,
+				513120F12085083E0033A507 /* MemberViewController.swift */,
+				513120F3208508470033A507 /* GuestViewController.swift */,
+				513120EB208507370033A507 /* BluetoothSerial.swift */,
 				513120DD208506C40033A507 /* Main.storyboard */,
 				513120E0208506C40033A507 /* Assets.xcassets */,
+				513120F920850B4A0033A507 /* Fonts */,
 				513120E2208506C40033A507 /* LaunchScreen.storyboard */,
 				513120E5208506C40033A507 /* Info.plist */,
 			);
 			path = AllClear;
+			sourceTree = "<group>";
+		};
+		513120F920850B4A0033A507 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				513120FA20850B590033A507 /* Comfortaa-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,7 +114,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Mitchell Sweet";
 				TargetAttributes = {
 					513120D5208506C40033A507 = {
@@ -123,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				513120FB208513420033A507 /* Comfortaa-Regular.ttf in Resources */,
 				513120E4208506C40033A507 /* LaunchScreen.storyboard in Resources */,
 				513120E1208506C40033A507 /* Assets.xcassets in Resources */,
 				513120DF208506C40033A507 /* Main.storyboard in Resources */,
@@ -136,8 +160,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				513120DC208506C40033A507 /* ViewController.swift in Sources */,
+				513120F82085090E0033A507 /* ScannerViewController.swift in Sources */,
+				513120F4208508470033A507 /* GuestViewController.swift in Sources */,
+				513120F22085083E0033A507 /* MemberViewController.swift in Sources */,
+				513120F0208507F70033A507 /* LoginViewController.swift in Sources */,
 				513120DA208506C40033A507 /* AppDelegate.swift in Sources */,
+				513120EC208507370033A507 /* BluetoothSerial.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +205,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -184,6 +213,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -234,6 +264,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -241,6 +272,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -277,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3TCCEYF5TG;
 				INFOPLIST_FILE = AllClear/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mitchell.AllClear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3TCCEYF5TG;
 				INFOPLIST_FILE = AllClear/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mitchell.AllClear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
