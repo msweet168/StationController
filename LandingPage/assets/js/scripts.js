@@ -8,7 +8,7 @@
 
 $(document).scroll(function() {
 	var y = $(this).scrollTop();
-	if (y > 280) {
+	if (y > 300) {
 		$('#navbar').fadeIn();
 	} else {
 		$('#navbar').fadeOut();
