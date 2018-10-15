@@ -24,3 +24,7 @@ function scrollToTop(scrollDuration) {
         else clearInterval(scrollInterval); 
     },15);
 }
+
+function openGithub() {
+    window.open("https://github.com/msweet168/StationController");
+}

@@ -476,5 +476,30 @@ a {
 	margin-bottom: 100px;
 }
 
+#closing .centerDesc {
+	width: 100%;
+	text-align: center;
+}
+
+#gitButton {
+	width: 300px; 
+	height: 100px; 
+	display: block;
+	margin: 0 auto;
+	margin-top: 50px; 
+	margin-bottom: 50px; 
+	font-size: 1.5em;
+	border-radius: 50px; 
+	border-style: solid;
+	border-color: #afafaf;
+	border-width: 4px;
+	transition: background-color 0.5s;
+	outline: 0;
+}
+
+#gitButton:hover {
+	background-color: #e8e8e8;
+}
+
 
 
