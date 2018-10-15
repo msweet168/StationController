@@ -36,12 +36,15 @@ Copyright © 2018 Mitchell Sweet. All rights reserved.
  	<div id="intro"> 
  		<h1 id="introTitle">What is Station Controller?</h1>
  		<p id="introDesc">The goal was to automate a model roller coaster (made of the popular Knex building toy) using an Arduino and an iOS application. The iOS app communicates with an Arduino which controls the three motors and sensor incorporated into the station. This allows the operator to control the coaster and guest to interact with it.</p>
+ 		<video width="450" height="350" id="introVideo" controls>
+ 			<source src="assets/media/introdemo.mp4" type="video/mp4">
+ 		</video>
  	</div>
 
  	<div id="coaster">
  		<h1 class="sectionTitle">The Coaster</h1>
  		<img class="sectionImgRight" src="assets/media/coaster1.jpg" alt="coaster">
- 		<p class="sectionDescLeft">Each year during Rochester Institute of Technology's Imagine RIT festival, the RIT Theme Park Enthusiasts have an exhibit featuring a large scale model roller coaster. Previously, the model's only powered feature was its lift hill which was difficult to control and had no guest interaction. The Station Controller would simplify the use of the lift hill by club members while also adding other features for guest interaction.</p>
+ 		<p class="sectionDescLeft">Each year during Rochester Institute of Technology's Imagine RIT festival, the RIT Theme Park Enthusiasts have an exhibit featuring a large scale model roller coaster. Previously, the model's only powered feature was its lift hill which was difficult to control and had no guest interaction. The Station Controller simplifies the use of the lift hill by club members while also adding features for guest interaction.</p>
  	</div>
 
  	<div id="components">
@@ -63,12 +66,52 @@ Copyright © 2018 Mitchell Sweet. All rights reserved.
  	</div>
 
  	<div id="connections">
-
-
+ 		<h1 class="sectionTitle">Connections</h1>
+ 		<img class="centerImage" src="assets/media/connections.png" alt="connections">
+ 		<p class="centerDesc">The Arduino which controls all components is connected via Bluetooth to the operator iOS device. That iOS device acts as a "master controller" which can control all components without limitation. Up to ten guest devices can connect to the operator device via multipeer.</p>
  	</div>
 
+ 	<div id="demo">
+ 		<h1 class="sectionTitle">Demo</h1>
+ 		<p class="centerDesc">Basic demo of the three components working together.</p>
+ 		<video width="550" height="450" id="demoVideo" controls>
+ 			<source src="assets/media/basicdemo.mp4" type="video/mp4">
+ 		</video>
+ 	</div>
 
+ 	<div id="apps">
+ 		<h1 class="sectionTitle">Apps</h1>
+ 		<p class="centerDesc">Operator Interface</p>
+ 		<p class="centerDesc" style="font-size: 0.8em; width: 450px;">The operator interface allows all components to be controlled without limitation. The operator can also choose to disable guest access and activate auto dispatch with dispatches the train after prolonged periods of inactivity.</p>
+ 		<img class="centerImage" id="operatorDiagram" src="assets/media/operatordiagram.png" alt="operatordiagram">
+ 		<p class="centerDesc" style="margin-top: 35px;">Guest Interface</p>
+ 		<p class="centerDesc" style="font-size: 0.8em; width: 450px;">The guest interface allows spectators to interact with the model with a more "realistic" roller coaster feel, and without the risk of interrupting the functionality of the coaster.</p>
+ 		<div id="ipadScreenshots">
+ 			<div class="ipadScreenshot">
+ 				<h2 class="ipadTitle">Standard</h2>
+ 				<img class="ipadImage" src="assets/media/guest-neutral.png" alt="neutral">
+ 				<p class="ipadDesc">Shown when train is sitting in station and gates are closed.</p>
+ 			</div>
+ 			<div class="ipadScreenshot">
+ 				<h2 class="ipadTitle">Gates Open</h2>
+ 				<img class="ipadImage" src="assets/media/guest-open.png" alt="open">
+ 				<p class="ipadDesc">Shown when station gates are open. Guests can only dispatch the train when the gates are closed.</p>
+ 			</div>
+ 			<div class="ipadScreenshot">
+ 				<h2 class="ipadTitle">Ride in progress</h2>
+ 				<img class="ipadImage" src="assets/media/guest-waiting.png" alt="waiting">
+ 				<p class="ipadDesc">Shown when the train is not in the station, triggered by the IR sensor on the platform. Guests cannot open gates or dispatch while a ride is in progress.</p>
+ 			</div>
+ 		</div>
+ 	</div>
 
+ 	<div id="walkthrough">
+ 		<h1 class="sectionTitle">Walk-through</h1>
+ 		<p class="centerDesc">Full walk-through demo of the project.</p>
+ 		<video width="550" height="450" id="walkthroughVideo" controls>
+ 			<source src="assets/media/walkthrough.mp4" type="video/mp4">
+ 		</video>
+ 	</div>
 
 
 

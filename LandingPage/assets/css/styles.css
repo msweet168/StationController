@@ -147,6 +147,12 @@ a {
 	margin-right: 25px; 
 }
 
+#introVideo {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
 /* Sections */
 
 .sectionTitle {
@@ -182,6 +188,7 @@ a {
 	width: 300px;
 	border-radius: 10px;
 	transition: opacity 0.5s;
+	cursor: pointer;
 }
 
 .sectionImgLeft:hover {
@@ -195,6 +202,7 @@ a {
 	width: 300px;
 	border-radius: 10px;
 	transition: opacity 0.5s;
+	cursor: pointer;
 }
 
 .sectionImgRight:hover {
@@ -215,6 +223,8 @@ a {
 	display: block;
 	margin: 0 auto;
 	margin-top: 30px;
+	border-radius: 10px; 
+	cursor: pointer;
 }
 
 .sectionList {
@@ -291,7 +301,6 @@ a {
 }
 
 #componentFlow .centerImage {
-	border-radius: 10px; 
 	width: 650px;
 	transition: opacity 0.5s; 
 }
@@ -300,6 +309,172 @@ a {
 	opacity: 0.8;
 }
 
+/* Connections */ 
+
+#connections {
+	background-color: rgba(255, 255, 255, 0.94);
+	width: 100%; 
+	padding-top: 15px; 
+	padding-bottom: 25px;
+}
+
+#connections .centerImage {
+	width: 650px;
+	transition: opacity 0.5s;
+	border-width: 2px; 
+	border-color: #b5b5b5;
+	border-style: solid;
+}
+
+#connections .centerImage:hover {
+	opacity: 0.5;
+}
+
+#connections .centerDesc {
+	width: 650px;
+}
+
+/* Demo */ 
+
+#demo {
+	width: 80%; 
+	display: block;
+	margin: 0 auto;
+	background-color: white; 
+	padding: 15px; 
+	border-radius: 8px; 
+	margin-top: 100px; 
+	margin-bottom: 100px; 
+}
+
+#demo .centerDesc {
+	width: 100%;
+	text-align: center;
+}
+
+#demoVideo {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
+/* Apps */ 
+
+#apps {
+	background-color: #1f1f1f;
+	width: 100%; 
+	padding-top: 15px; 
+	padding-bottom: 25px;
+}
+
+#apps h1 {
+	color: white;
+}
+
+#apps p {
+	color: white;
+}
+
+#apps .centerDesc {
+	width: auto;
+	text-align: center;
+}
+
+#operatorDiagram {
+	border-radius: 0px; 
+	padding-right: 160px; 
+}
+
+#ipadScreenshots {
+	width: 1269px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 25px; 
+}
+
+.ipadScreenshot {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 400px; 
+	margin-right: 10px; 
+	margin-left: 10px;
+	vertical-align: top;
+}
+
+.ipadTitle {
+	font-weight: 400; 
+	font-size: 1.3em;
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+
+.ipadImage {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.ipadDesc {
+	font-weight: 300; 
+	width: 100%;
+	font-size: 1em;
+}
+
+@media screen and (max-width: 1269px) {
+	#ipadScreenshots {
+		width: 420px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.ipadScreenshot {
+		width: 300px;
+	}
+
+	#ipadScreenshots {
+		width: 320px;
+	}
+
+	#operatorDiagram {
+		width: 360px;
+		padding-right: 0px;
+	}
+}
+
+/* Walkthrough */
+
+#walkthrough {
+    background-color: rgba(255, 255, 255, 0.94);
+	width: 100%; 
+	padding-top: 15px; 
+	padding-bottom: 25px;
+}
+
+#walkthrough .centerDesc {
+	width: 100%;
+	text-align: center;
+}
+
+#walkthroughVideo {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
+
+/* Closing */
+
+#closing {
+	width: 80%; 
+	display: block;
+	margin: 0 auto;
+	background-color: white; 
+	padding: 15px; 
+	border-radius: 8px; 
+	margin-top: 100px; 
+	margin-bottom: 100px;
+}
 
 
 
