@@ -380,6 +380,10 @@ a {
 	text-align: center;
 }
 
+#apps .details {
+	width: 450px;
+}
+
 #operatorDiagram {
 	border-radius: 0px; 
 	padding-right: 160px; 
@@ -491,7 +495,7 @@ a {
 	font-size: 1.5em;
 	border-radius: 50px; 
 	border-style: solid;
-	border-color: #afafaf;
+	border-color: #e8e8e8;
 	border-width: 4px;
 	transition: background-color 0.5s;
 	outline: 0;
@@ -499,6 +503,100 @@ a {
 
 #gitButton:hover {
 	background-color: #e8e8e8;
+}
+
+/* Media Quearies */
+
+@media screen and (max-width: 900px) {
+	#componentFlow .centerImage {
+		width: 450px; 
+	}
+
+	#connections .centerImage {
+		width: 450px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.sectionDescLeft {
+		width: auto;
+		margin-right: 10px; 
+		margin-left: 10px; 
+		padding: 0; 
+		padding-top: 25px;
+		font-size: 1em;
+	}
+
+	.sectionList {
+		width: auto;
+		font-size: 1em;
+		margin-right: 10px; 
+		margin-left: 30px; 
+		padding: 0; 
+		padding-top: 20px; 
+	}
+
+	#connections .centerDesc {
+		width: auto;
+		font-size: 1em;
+		margin-right: 10px; 
+		margin-left: 10px; 
+		padding: 0;
+		padding-top: 20px;
+	}
+
+	video {
+		width: 100%;
+		margin-right: 10px;
+		margin-left: 10px; 
+	}
+
+	#walkthroughVideo {
+		width: 80%;
+		padding: 0; 
+		margin: 0;
+		display: block;
+		margin: 0 auto;
+	}
+
+
+}
+
+@media screen and (max-width: 450px) {
+	#title {
+		font-size: 2em;
+	}
+
+	#subtitle {
+		font-size: 1.5em;
+	}
+
+	#introTitle {
+		font-size: 1.6em;
+	}
+
+	#introDesc {
+		margin-right: 8px; 
+		margin-left: 8px; 
+		font-size: 1em;
+	}
+
+	#componentFlow .centerImage {
+		width: 90%;
+	}
+
+	#connections .centerImage {
+		width: 90%;
+	}
+
+	#apps .details{
+		width: 90%;
+	}
+
+	#navTitle {
+		font-size: 1.4em;
+	}
+
 }
 
 
