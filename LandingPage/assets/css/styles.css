@@ -381,7 +381,8 @@ a {
 }
 
 #apps .details {
-	width: 450px;
+	width: 500px;
+	font-size: 1em;
 }
 
 #operatorDiagram {
@@ -591,6 +592,7 @@ a {
 
 	#apps .details{
 		width: 90%;
+		font-size: 0.8em;
 	}
 
 	#navTitle {
