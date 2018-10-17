@@ -18,14 +18,11 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     @IBOutlet weak var bottomConst: NSLayoutConstraint!
     
     //MARK Variables
-    
     var gatesOpen = false;
     let defaultBottomConst = 60;
     let extendedBottomConst = -550;
     
-    
     //MARK: Multipeer variables
-    
     let serviceType = "LOCAL-Chat"
     
     var browser: MCBrowserViewController!
@@ -40,7 +37,6 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
         multipeerSetup()
     }
     
-    
     /// Sets up runtime UI elements.
     func viewSetup() {
         blurView.backgroundColor = UIColor(red: 248/255, green: 148/255, blue: 6/255, alpha: 0.8)
@@ -52,6 +48,7 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     
     //MARK: Multipeer Functions
     
+    /// Configures the basic settings of and starts the multipeer service.
     func multipeerSetup() {
         self.peerID = MCPeerID(displayName: UIDevice.current.name)
         self.session = MCSession(peer: self.peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
@@ -62,9 +59,9 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
         self.assistant = MCAdvertiserAssistant(serviceType:serviceType,
                                                discoveryInfo:nil, session:self.session)
         self.assistant.start()
-        
     }
     
+    /// Sends a multipeer message out to connected peers using a passed in String.
     func sendMessage(message: String) {
         let msg = message.data(using: String.Encoding.utf8,
                                         allowLossyConversion: false)
@@ -76,6 +73,7 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
         }
     }
     
+    /// Takes guestCommand enum and sends it as a multipeer message.
     func sendCommand(command: guestCommand) {
         
         let msg = command.rawValue.data(using: String.Encoding.utf8,
@@ -90,8 +88,7 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     
     func browserViewControllerDidFinish(
         _ browserViewController: MCBrowserViewController)  {
-        // Called when the browser view controller is dismissed (ie the Done
-        // button was tapped)
+        // Called when the browser view controller is dismissed
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -106,7 +103,6 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
         DispatchQueue.main.async {
             let msg = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)
             
-            //TODO: Handle message recieved
             if msg == "arrived" {
                 self.didArrive()
             }
@@ -128,7 +124,6 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     
     
     //MARK: Functions
-    
     func animateOver() {
         bottomConst.constant = CGFloat(extendedBottomConst)
         UIView.animate(withDuration: 0.5) {
@@ -157,12 +152,7 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
         gateToggleButton.setTitle("Waiting for train to return...", for: .disabled)
     }
     
-    
-    
-    
-    
     //MARK: Actions
-    
     @IBAction func connect() {
         self.present(self.browser, animated: true, completion: nil)
     }
@@ -194,10 +184,10 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     }
     
     
-    // The following methods do nothing, but the MCSessionDelegate protocol
-    // requires that we implement them.
+    // The following functions do nothing, but the MCSessionDelegate protocol
+    // requires that they are implemented.
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        // Called when a peer starts sending a file to us
+        // Called when a peer starts sending a file
     }
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
@@ -205,12 +195,12 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        // Called when a peer establishes a stream with us
+        // Called when a peer establishes a stream
     }
     
     func session(_ session: MCSession, peer peerID: MCPeerID,
                  didChange state: MCSessionState)  {
-        // Called when a connected peer changes state (for example, goes offline)
+        // Called when a connected peer changes state
         OperationQueue.main.addOperation({
             switch (state) {
             case .connected:
@@ -226,9 +216,6 @@ class GuestViewController: UIViewController, MCBrowserViewControllerDelegate, MC
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
-    
-
-
 }
 
 enum guestCommand: String {

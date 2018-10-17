@@ -21,8 +21,6 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
     /// The peripheral the user has selected
     var selectedPeripheral: CBPeripheral?
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,9 +50,7 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.rowHeight = 60
     }
     
-    
     // MARK: Bluetooth Serial Delegate
-    
     @objc func connectTimeOut() {
         // don't if already connected
         if let _ = serial.connectedPeripheral {
@@ -66,7 +62,7 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
             selectedPeripheral = nil
         }
         
-        print("Connection failed: time out.")
+        print("Connection failed: time out")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,17 +96,12 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //TODO: make sure this works right
-        
         serial.stopScan()
         selectedPeripheral = peripherals[(indexPath as NSIndexPath).row].peripheral
         serial.connectToPeripheral(selectedPeripheral!)
         
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(connectTimeOut), userInfo: nil, repeats: false)
-        
     }
-    
-    
     
     func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
         // check whether it is a duplicate
@@ -148,9 +139,6 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    
-    
-    
     // MARK: Actions
     @IBAction func back() {
         serial.startScan()
@@ -161,5 +149,4 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
