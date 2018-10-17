@@ -28,7 +28,9 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     @IBOutlet var autoDispatchSwitch: UISwitch!
     @IBOutlet var backBlur: UIView!
     
+    // MARK: General Variables
     var dispatchTimer: Timer?
+    let presetDefaultsKey = "preset"
     
     //MARK: Multipeer Variables
     let serviceType = "LOCAL-Chat"
@@ -47,18 +49,17 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
         bluetoothInitalization()
         multipeerSetup()
         
-        if let savedPreset = UserDefaults.standard.object(forKey: "preset") as? Int {
+        if let savedPreset = UserDefaults.standard.object(forKey: presetDefaultsKey) as? Int {
             preset = savedPreset
             presetLabel.text = "Saved Preset: \(preset)"
         }
         else {
             print("Setting preset for first time.")
-            UserDefaults.standard.set(preset, forKey: "preset")
+            UserDefaults.standard.set(preset, forKey: presetDefaultsKey)
         }
-
     }
     
-    /// Setup runtime UI elements.
+    /// Sets up runtime UI elements.
     func viewSetup() {
         backBlur.backgroundColor = UIColor(red: 0/255, green: 118/255, blue: 255/255, alpha: 0.85)
         liftValue.text = "0"
@@ -72,7 +73,7 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
         
     }
     
-    /// Set settings for multipeer.
+    /// Sets up basic settings for and starts multipeer service
     func multipeerSetup() {
         self.peerID = MCPeerID(displayName: "Master: \(UIDevice.current.name)")
         self.session = MCSession(peer: self.peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
@@ -82,7 +83,7 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
         self.assistant.start()
     }
     
-    /// Sends message to connected guest controllers.
+    /// Sends message to connected guest controllers
     func sendMessage(msg: String) {
         let _ : NSError?
         do {
@@ -112,37 +113,36 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     
     /// Handle recieved command
     func recievedCommand(command: String) {
-        if guestSwitch.isOn {
-            print("Received: " + command)
-            
-            let recieved = guestCommand(rawValue: command)
-            
-            if recieved == .dispatch {
-                dispatch()
-            }
-            else if recieved == .open {
-                serial.sendMessageToDevice("O")
-                dispatchTimer?.invalidate()
-                gateSelector.selectedSegmentIndex = 1
-            }
-            else if recieved == .close {
-                serial.sendMessageToDevice("C")
-                dispatchTimer?.invalidate()
-                gateSelector.selectedSegmentIndex = 0
-            }
-            else {
-                print("Unrecognized command recieved.")
-            }
-        }
-        else {
+        
+        guard guestSwitch.isOn else {
             print("Recieved command \"\(command)\" from guest, but guest is not enabled.")
+            return
         }
         
+        print("Received: " + command)
+        
+        let recieved = guestCommand(rawValue: command)
+        
+        if recieved == .dispatch {
+            dispatch()
+        }
+        else if recieved == .open {
+            serial.sendMessageToDevice("O")
+            dispatchTimer?.invalidate()
+            gateSelector.selectedSegmentIndex = 1
+        }
+        else if recieved == .close {
+            serial.sendMessageToDevice("C")
+            dispatchTimer?.invalidate()
+            gateSelector.selectedSegmentIndex = 0
+        }
+        else {
+            print("Unrecognized command recieved.")
+        }
     }
     
     
-    //MARK: Bluetooth Serial
-    
+    // MARK: Bluetooth Serial
     func bluetoothInitalization() {
         serial.delegate = self
         
@@ -159,7 +159,7 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     /// Checks the state of the serial connection and changes UI accordingly.
     @objc func reloadView() {
         serial.delegate = self
-        
+
         if serial.isReady {
             print("Connected: \(serial.connectedPeripheral!.name ?? "Unknown Device")")
         } else if serial.centralManager.state == .poweredOn {
@@ -170,7 +170,6 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     }
     
     func serialDidReceiveString(_ message: String) {
-        //TODO: Handle recieved
         
         print("Recieved: " + message)
         
@@ -180,7 +179,6 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
         else if message.contains("departed") {
             departed()
         }
-        
     }
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
@@ -196,7 +194,6 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     }
     
     //MARK: Functions
-    
     func dispatch() {
         dispatchTimer?.invalidate()
         serial.sendMessageToDevice("D")
@@ -225,7 +222,6 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     }
     
     //MARK: Actions
-    
     @IBAction func changeSpeedLabel(Sender: UISlider) {
         if (Int(Sender.value) == 10) {
             liftValue.text = "\(Int(Sender.value))"
@@ -268,7 +264,7 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     
     @IBAction func savePreset() {
         preset = Int(liftSlider.value)
-        UserDefaults.standard.set(preset, forKey: "preset")
+        UserDefaults.standard.set(preset, forKey: presetDefaultsKey)
         presetLabel.text = "Saved Preset: \(preset)"
     }
     
@@ -277,12 +273,6 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
         liftSlider.value = Float(preset)
         liftValue.text = "\(preset)"
     }
-    
-    
-    
-    
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -290,10 +280,9 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     }
     
     
-    // The following methods don't do much, but the MCSessionDelegate protocol
-    // requires that we implement them.
+    // The following methods don't do much, but the MCSessionDelegate protocol requires them.
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        // Called when a peer starts sending a file to us
+        // Called when a peer starts sending a file
     }
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
@@ -301,12 +290,12 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        // Called when a peer establishes a stream with us
+        // Called when a peer establishes a stream
     }
     
     func session(_ session: MCSession, peer peerID: MCPeerID,
                  didChange state: MCSessionState)  {
-        // Called when a connected peer changes state (for example, goes offline)
+        // Called when a connected peer changes state
         OperationQueue.main.addOperation({
             switch (state) {
             case .connected:
@@ -322,6 +311,4 @@ class MemberViewController: UIViewController, MCSessionDelegate, BluetoothSerial
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
-    
-
 }

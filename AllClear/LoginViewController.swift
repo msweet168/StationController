@@ -25,7 +25,6 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         viewSetup()
     }
     
@@ -37,7 +36,6 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
         fatalError("Error: Disconnect on startup")
     }
-    
     
     //MARK: Functions
     
@@ -51,7 +49,6 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
         
         serial = BluetoothSerial(delegate: self)
     }
-    
     
     func showLogin() {
         animate(show: false)
@@ -72,6 +69,7 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
         }
     }
     
+    /// Validates entered password with password stored on server. (this is low security, but programmed this way so password can be changed without editing iOS source code.)
     func validatePassword(entered: String, completion: @escaping (Bool) -> Void) {
         let url = URL(string: "https://www.masprojects.site/tpetemp/clearcheck.txt")
         var urlRequest = URLRequest(url: url!)
@@ -90,23 +88,19 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
                 return
             }
             
-
             if let pass = String(data: content, encoding: String.Encoding.utf8) {
                 DispatchQueue.main.async {
                     print(pass)
                     completion(entered == pass.trimmingCharacters(in: CharacterSet.newlines) ? true : false)
                 }
-                
             }
             else {
                 DispatchQueue.main.async {
                     completion(false)
                 }
             }
-            
         })
         task.resume()
-        
     }
     
     func goMember() {
@@ -117,9 +111,7 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
         self.performSegue(withIdentifier: "toGuest", sender: self)
     }
     
-    
     //MARK: Actions
-    
     @IBAction func memberTapped() {
         showLogin()
     }
@@ -153,11 +145,8 @@ class LoginViewController: UIViewController, BluetoothSerialDelegate {
         })
     }
     
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
