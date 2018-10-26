@@ -28,3 +28,14 @@ function scrollToTop(scrollDuration) {
 function openGithub() {
     window.open("https://github.com/msweet168/StationController");
 }
+
+function showImage(image) {
+    document.getElementById('imageModal').style.display = "block";
+    document.getElementById('imageModal').getElementsByTagName('img')[0].src = image; 
+    document.getElementsByTagName('body')[0].style.overflow = "hidden";
+}
+
+function dismissModal() {
+    document.getElementById('imageModal').style.display = "none";
+    document.getElementsByTagName('body')[0].style.overflow = "scroll";
+}

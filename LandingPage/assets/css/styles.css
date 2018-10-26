@@ -82,6 +82,32 @@ a {
 	z-index: -1;
 }
 
+/* Image Modal */ 
+
+#imageModal {
+	width: 100vw;  
+	height: 100vh; 
+	position: fixed;
+	z-index: 3;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: none;
+}
+
+#imageModal img {
+	border-radius: 10px; 
+	display: block; 
+    margin: 0 auto;
+	position: relative;
+	max-width: 85%; 
+	max-height: 85%;
+	top: 50%;
+	transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
 /* Title and Subtitle */
 
 #titleSection {
@@ -559,7 +585,6 @@ a {
 		display: block;
 		margin: 0 auto;
 	}
-
 
 }
 

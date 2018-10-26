@@ -27,6 +27,10 @@ Copyright © 2018 Mitchell Sweet. All rights reserved.
 	<div id="background"></div>
  	<div id="blur"></div>
 
+ 	<div id="imageModal" onclick="dismissModal();">
+ 		<img src="" alt="modal image">
+ 	</div>
+
 	<div id="titleSection"">
  		<h1 id="title" class="titles">Station Controller</h1>
  		<h2 id="subtitle" class="titles">A Project by Mitchell Sweet</h2>
@@ -43,13 +47,13 @@ Copyright © 2018 Mitchell Sweet. All rights reserved.
 
  	<div id="coaster">
  		<h1 class="sectionTitle">The Coaster</h1>
- 		<img class="sectionImgRight" src="assets/media/coaster1.jpg" alt="coaster">
+ 		<img class="sectionImgRight" src="assets/media/coaster1.jpg" alt="coaster" onclick="showImage('assets/media/coaster1.jpg');">
  		<p class="sectionDescLeft">Each year during Rochester Institute of Technology's Imagine RIT festival, the RIT Theme Park Enthusiasts have an exhibit featuring a large scale model roller coaster. Previously, the model's only powered feature was its lift hill which was difficult to control and had no guest interaction. The Station Controller simplifies the use of the lift hill by club members while also adding features for guest interaction.</p>
  	</div>
 
  	<div id="components">
  		<h1 class="sectionTitle">Components</h1>
- 		<img class="sectionImgRight" src="assets/media/station1.jpg" alt="station">
+ 		<img class="sectionImgRight" src="assets/media/station1.jpg" alt="station" onclick="showImage('assets/media/station1.jpg');">
  		<p class="sectionDescLeft">The station has three main "moving" components. These include the lift hill, the station gates, and the dispatch system. There is also a sensor to detect the car.</p>
  		<ul class="sectionList">
  			<li>Dispatch System: Powered by a standard DC motor, the dispatch system brings the stopped car in the station to the lift hill.</li>
@@ -61,14 +65,14 @@ Copyright © 2018 Mitchell Sweet. All rights reserved.
 
  	<div id="componentFlow">
  		<h1 class="sectionTitle">Component Flow</h1>
- 		<img class="centerImage" src="assets/media/Planning.jpg" alt="flow">
+ 		<img class="centerImage" src="assets/media/Planning.jpg" alt="flow" onclick="showImage('assets/media/Planning.jpg');">
  		<figcaption class="imageDisc">Flow from iPhone to Arduino to components.</figcaption>
  	</div>
 
  	<div id="connections">
  		<h1 class="sectionTitle">Connections</h1>
- 		<img class="centerImage" src="assets/media/connections.png" alt="connections">
- 		<p class="centerDesc">The Arduino which controls all components is connected via Bluetooth to the operator iOS device. That iOS device acts as a "master controller" which can control all components without limitation. Up to ten guest devices can connect to the operator device via multipeer.</p>
+ 		<img class="centerImage" src="assets/media/connections.png" alt="connections" onclick="showImage('assets/media/connections.png');">
+ 		<p class="centerDesc">The Arduino which controls all components is connected via Bluetooth to the operator iOS device. That iOS device acts as a "master controller" which can control all components without limitation. Up to seven guest devices can connect to the operator device via multipeer.</p>
  	</div>
 
  	<div id="demo">
